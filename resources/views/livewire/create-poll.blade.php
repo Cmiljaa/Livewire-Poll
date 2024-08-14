@@ -6,6 +6,10 @@
 
         Current title: {{$title}}
 
+        @error('title')
+          <div class="text-red-500">{{$message}}</div>
+        @enderror
+
         <div class="mb-4 mt-4">
           <button class="btn" wire:click.prevent="addOption">Add Option</button>
         </div>
@@ -19,7 +23,11 @@
               <div class="flex gap-2 mb-4">
                 <input type="text" wire:model.live="options.{{$index}}">
                 <button class="btn" wire:click.prevent="removeOption({{$index}})">Remove</button>
+                @error("options.{$index}")
+                  <div class="text-red-500">{{ $message }}</div>
+                @enderror
               </div>
+                
             @endforeach
         </div>
 
