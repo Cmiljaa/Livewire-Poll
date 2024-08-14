@@ -18,4 +18,9 @@ class CreatePoll extends Component
     public function addOption(){
         $this->options[] = $this->title; 
     }
+
+    public function removeOption($index){
+        unset($this->options[$index]);
+        $this->options = array_values($this->options);
+    }
 }
